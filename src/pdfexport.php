@@ -19,13 +19,28 @@ class PDF extends tFPDF {
     }
 
     function Header() {
-        $this->SetXY($this->margins,0);
+        $pageWidth = $this->GetPageWidth();
+        $headerHeight = 10;
+        $logoPath = __DIR__ . '/../static/img/tuebix-logo.png';
+        $logoHeight = 8;
+        $logoWidth = 0;
+        if (file_exists($logoPath)) {
+            list($imgW, $imgH) = getimagesize($logoPath);
+            $logoWidth = $logoHeight * ($imgW / $imgH);
+        }
+
+        $this->SetXY($this->margins, 0);
         $this->SetFont('DejaVu', 'I', 12);
-        $this->Cell(100, 10, "Schichtplan " . $this->eventInfo["eventName"], "B", 0, 'L');
-        $this->SetFont('DejaVu', 'BI', 16);
-        $this->SetTextColor(0, 0,0x80);
-        $this->Cell(0, 10, "fsi", "B", 0, 'R');
-        $this->Ln(10);
+        $this->SetTextColor(0, 0, 0);
+        $this->Cell($pageWidth - 2 * $this->margins - $logoWidth, $headerHeight,
+            "Schichtplan " . $this->eventInfo["eventName"], 0, 0, 'L');
+
+        if (file_exists($logoPath)) {
+            $this->Image($logoPath, $pageWidth - $this->margins - $logoWidth, 1, $logoWidth, $logoHeight);
+        }
+
+        $this->Line($this->margins, $headerHeight, $pageWidth - $this->margins, $headerHeight);
+        $this->Ln($headerHeight);
     }
 
     function Footer() {
@@ -53,38 +68,37 @@ function buildPdf($config, &$eventInfo) {
         $pdf->Ln(3);
         /* table header */
         /* scale to max width */
-        $colWidth = ($pdf->GetPageWidth() - 2 * $pdf->margins) / (count($task["taskShifts"]) + 1);
+        $maxSlots = max(array_column($task['taskShifts'], 'shiftSlots'));
+        $colWidth = ($pdf->GetPageWidth() - 2 * $pdf->margins) / ($maxSlots + 1);
         $pdf->Cell($colWidth, 10, "", "B", 0, "C");
+        $pdf->SetFont("DejaVu", "B", 14);
+        for ($slot = 0; $slot < $maxSlots; $slot++) {
+            $pdf->Cell($colWidth, 10, $slot + 1, "B", 0, "C");
+        }
+        $pdf->Ln(10);
+        /* table content */
         $initFontSize = 14; /* dynamic font size */
-        $fontSize = 0;
+        $shiftIdx = 0;
         foreach($task["taskShifts"] as $shift) {
+            /* alternating colors */
+            $pdf->SetFillColor(
+                ($shiftIdx % 2) ? $pdf->colOdd[0] : $pdf->colEven[0],
+                ($shiftIdx % 2) ? $pdf->colOdd[1] : $pdf->colEven[1],
+                ($shiftIdx % 2) ? $pdf->colOdd[2] : $pdf->colEven[2]
+            );
             $fontSize = $initFontSize;
             $pdf->SetFont("DejaVu", "B", $fontSize);
             while($pdf->GetStringWidth($shift["shiftName"]) > $colWidth) {
                 /* shrink until fit */
                 $fontSize--;
                 $pdf->SetFont("DejaVu", "B", $fontSize);
-            } 
-            $pdf->Cell($colWidth, 10, $shift["shiftName"], "B", 0, "C");
-        }
-        $pdf->Ln(10);
-        /* table content */
-        $slot = 0;
-        $maxSlots = max(array_column($task['taskShifts'], 'shiftSlots'));
-        while($slot < $maxSlots) {
-            /* alternating colors */
-            $pdf->SetFillColor(
-                ($slot % 2) ? $pdf->colOdd[0] : $pdf->colEven[0],
-                ($slot % 2) ? $pdf->colOdd[1] : $pdf->colEven[1],
-                ($slot % 2) ? $pdf->colOdd[2] : $pdf->colEven[2]
-            );
-            $pdf->SetFont("DejaVu", "B", 14);
-            $pdf->Cell($colWidth, 10, $slot + 1, "B", 0, "C", 1);
+            }
+            $pdf->Cell($colWidth, 10, $shift["shiftName"], "B", 0, "C", 1);
             $pdf->SetFont("DejaVu", "", 14);
-            foreach($task["taskShifts"] as $shift) {
+            for ($slot = 0; $slot < $maxSlots; $slot++) {
                 if($slot < $shift["shiftSlots"]) {
                     /* valid slot */
-                    $pdf->Cell($colWidth, 10, $shift["entries"][$slot]["entryName"] ?? "", 
+                    $pdf->Cell($colWidth, 10, $shift["entries"][$slot]["entryName"] ?? "",
                         "B", 0, "C", 1);
                 } else {
                     /* invalid slot */
@@ -92,7 +106,7 @@ function buildPdf($config, &$eventInfo) {
                 }
             }
             $pdf->Ln(10);
-            $slot++;
+            $shiftIdx++;
         }
     }
     return $pdf;

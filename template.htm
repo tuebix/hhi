@@ -32,6 +32,11 @@
             }
 
             function showRegistrationDialog(task, shift) {
+                const submitBtn = document.getElementById("btn-register-submit");
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.value = "Eintragen";
+                }
                 document.getElementById("registration-task").innerHTML = task;
                 document.getElementById("input-task").value = task;
                 document.getElementById("registration-shift").innerHTML = shift;
@@ -174,7 +179,7 @@
                                     <thead>
                                         <tr>
                                             <th>Nr.</th>
-                                            <th>Name</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -204,7 +209,7 @@
             <div class="modal-container">
                 <div class="modal-header">
                 <a href="javascript:hideRegistrationDialog()" class="btn btn-clear float-right" aria-label="Close"></a>
-                <form method="POST" id="form-register">
+                <form method="POST" id="form-register" onsubmit="const b=document.getElementById('btn-register-submit');if(b.disabled){return false;}b.disabled=true;b.value='Wird gesendet…';">
                     <div class="modal-title h5">In Schicht eintragen</div>
                     </div>
                     <div class="modal-body">
@@ -230,24 +235,24 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-3 col-sm-12">
-                                        <div class="popover">
-                                            <label class="form-label" for="input-zxnick">Deine Mail:</label>
-                                            <!-- <div class="popover-container popover-zxnick"> -->
-                                            <!--     <div class="card"> -->
-                                            <!--         <div class="card-header text-tiny"> -->
-                                            <!--             <b>Wofür benötigen wir Dein ZX-Kürzel?</b> -->
-                                            <!--         </div> -->
-                                            <!--         <div class="card-body text-tiny"> -->
-                                            <!--             Wir benötigen Dein ZX-Kürzel lediglich, um Dir eine Mail an Deine studentische -->
-                                            <!--             Mailadresse zu senden. Nach der Veranstaltung wird das ZX-Kürzel natürlich sofort -->
-                                            <!--             wieder gelöscht und von uns nicht anderweitig benutzt.  -->
-                                            <!--         </div> -->
-                                            <!--     </div> -->
-                                            <!-- </div> -->
+                                        <div class="popover popover-bottom">
+                                            <label class="form-label" for="input-mail">Deine Mail: <i class="si-question-circle"></i></label>
+                                            <div class="popover-container popover-mail">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <b>Wofür benötigen wir Deine E-Mail-Adresse?</b>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        Wir benötigen Deine E-Mail-Adresse, um Dir eine Bestätigungsmail zu senden
+                                                        und Dir einen Abmelde-Link zuzuschicken. Nach der Veranstaltung werden Deine Daten
+                                                        natürlich sofort wieder gelöscht und von uns nicht anderweitig benutzt.
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-9 col-sm-12">
-                                        <input class="form-input" type="text" id="input-zxnick" name="data-zxnick" placeholder="pingu@tuebix.org" pattern="^(?:zx|ii)\w{3}\d{2}$|^[^\s@]+@[^\s@]+\.[^\s@]+$" required>
+                                        <input class="form-input" type="email" id="input-mail" name="data-mail" placeholder="pingu@tuebix.org" required>
                                     </div>
                                 </div>
                             </div>
@@ -259,7 +264,7 @@
                                 <a href="javascript:hideRegistrationDialog()" class="btn btn-primary">Abbrechen</a>
                             </div>
                             <div class="col-6 text-center">
-                                <input type="submit" class="btn btn-primary" value="Eintragen" />
+                                <input type="submit" class="btn btn-primary" id="btn-register-submit" value="Eintragen" />
                             </div>
                         </div>
                     </div>

@@ -151,9 +151,26 @@ h6 {
   color: var(--logo-first);
 }
 
-.popover-zxnick {
-  left: 120% !important;
-  font-size: 70%;
+.popover-mail {
+  left: 0 !important;
+  top: 100% !important;
+  font-size: 0.85rem;
+  width: 22rem;
+  max-width: min(22rem, 90vw);
+  margin-top: 0.25rem;
+}
+
+.popover.popover-bottom:hover .popover-mail {
+  transform: translate(0, 0) !important;
+}
+
+.popover-mail .card-body {
+  overflow-wrap: break-word;
+  line-height: 1.4;
+}
+
+#modal-registration .modal-body {
+  overflow: visible;
 }
 
 .chip-occupancy {
