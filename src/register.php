@@ -11,19 +11,17 @@ function handleRegister(array $postData, array $config, array &$eventInfo): int 
     $rawData = fread($fp, filesize($config["shiftFile"]));
     $eventInfo = json_decode($rawData, true);
 
-    /* distinguish between pure zxnick and full mail address */
-    $possibleZxNick = htmlspecialchars($_POST["data-zxnick"], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-    $entryMail = str_contains($possibleZxNick, "@") ? $possibleZxNick : ($possibleZxNick . "@student.uni-tuebingen.de");
+    $entryMail = htmlspecialchars(trim($postData["data-mail"] ?? ''), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 
     /* store user data */
     $entry = array(
-        "entryName" => htmlspecialchars($_POST["data-name"], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'),
+        "entryName" => htmlspecialchars($postData["data-name"], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'),
         "entryMail" => $entryMail,
         "entryTimestamp" => time(),
-        "entryHash" => hash("sha256", $config["hashSalt"] . time() . $_POST["data-name"] . $_POST["data-zxnick"])
+        "entryHash" => hash("sha256", $config["hashSalt"] . time() . $postData["data-name"] . $postData["data-mail"])
     );
-    $taskName = $_POST["data-task"];
-    $shiftName = $_POST["data-shift"];
+    $taskName = $postData["data-task"];
+    $shiftName = $postData["data-shift"];
 
     /* find correct task and shift */
     $tasks = $eventInfo["eventTasks"];
