@@ -10,75 +10,19 @@
             "taskShifts": [
                 {
                     "shiftName": "11:00 - 12:00",
-                    "shiftSlots": 3,
-                    "entries": [
-                        {
-                            "entryName": "Benny",
-                            "entryMail": "benny@bescl.de",
-                            "entryTimestamp": 1780953270,
-                            "entryHash": "3f3f9a1d77cabcce1a325650de66d331e80c68a0954818efae41c439c92ed7fd"
-                        },
-                        {
-                            "entryName": "Benn",
-                            "entryMail": "benny@bescl.de",
-                            "entryTimestamp": 1780953749,
-                            "entryHash": "0c5a2785f1ac35f05d147e3ece94312d67b8b8a55a7d6e14a9bae51bf6d6e248"
-                        }
-                    ]
+                    "shiftSlots": 3
                 },
                 {
                     "shiftName": "12:00 - 13:00",
-                    "shiftSlots": 3,
-                    "entries": [
-                        {
-                            "entryName": "Benny 2",
-                            "entryMail": "benny@bescl.de",
-                            "entryTimestamp": 1780953326,
-                            "entryHash": "77c261b4e61f552c83284579b1440dd2e4af897d37bde5e27362d0ce5f660d25"
-                        },
-                        {
-                            "entryName": "Benny 2",
-                            "entryMail": "benny@bescl.de",
-                            "entryTimestamp": 1780953327,
-                            "entryHash": "ec3d37a57c58de38f2406eae5f538be6b8adabc84ee9d9c7d96b3074948e6a28"
-                        },
-                        {
-                            "entryName": "Benny 2",
-                            "entryMail": "benny@bescl.de",
-                            "entryTimestamp": 1780953327,
-                            "entryHash": "ec3d37a57c58de38f2406eae5f538be6b8adabc84ee9d9c7d96b3074948e6a28"
-                        }
-                    ]
+                    "shiftSlots": 3
                 },
                 {
                     "shiftName": "13:00 - 14:00",
-                    "shiftSlots": 3,
-                    "entries": [
-                        {
-                            "entryName": "Benn",
-                            "entryMail": "benny@bescl.de",
-                            "entryTimestamp": 1780953979,
-                            "entryHash": "ce6c90e1757c8c7d7c9a086ded5e31efbcaf1b14d818c4b193611bf3ca1ba422"
-                        }
-                    ]
+                    "shiftSlots": 3
                 },
                 {
                     "shiftName": "14:00 - 15:00",
-                    "shiftSlots": 2,
-                    "entries": [
-                        {
-                            "entryName": "John",
-                            "entryMail": "benjamin.steinert@bescl.de",
-                            "entryTimestamp": 1780953447,
-                            "entryHash": "5e4fdd8ddb6b65d458bcc086520b3dfb7bd889167f0898783f555d4d40e3365b"
-                        },
-                        {
-                            "entryName": "John",
-                            "entryMail": "benjamin.steinert@bescl.de",
-                            "entryTimestamp": 1780953448,
-                            "entryHash": "f604ec4b7e3e02815897dbd6aa0d162aa9a7b5fc98fdb55d9be88d94f89b1739"
-                        }
-                    ]
+                    "shiftSlots": 2
                 },
                 {
                     "shiftName": "15:00 - 16:00",
@@ -142,26 +86,11 @@
             "taskShifts": [
                 {
                     "shiftName": "09:00 - 10:00",
-                    "shiftSlots": 2,
-                    "entries": [
-                        {
-                            "entryName": "John",
-                            "entryMail": "benny@bescl.de",
-                            "entryTimestamp": 1780953894,
-                            "entryHash": "b49e09b4a6465f0ff23cf6b2b8f8028f2782dd8d5574271d26491e83fcd4b4fb"
-                        },
-                        {
-                            "entryName": "John",
-                            "entryMail": "benny@bescl.de",
-                            "entryTimestamp": 1780953895,
-                            "entryHash": "922064e2f38ba9fe92d516114ef33aea084b02abfdac84298082dcff510c0bf9"
-                        }
-                    ]
+                    "shiftSlots": 2
                 },
                 {
                     "shiftName": "10:00 - 11:00",
-                    "shiftSlots": 2,
-                    "entries": []
+                    "shiftSlots": 2
                 },
                 {
                     "shiftName": "11:00 - 12:00",
@@ -195,25 +124,11 @@
         },
         {
             "taskName": "Kochen",
-            "taskDesc": "Wir werden wieder veganes Chili kochen und mittags verteilen. Wenn ihr dabei helfen wollt, w\u00e4re das eine sehr gro\u00dfe Entlastung f\u00fcr uns. Treffpunkt ist um 9:30 bei Pfrondorf (mit dem Auto ca. 10 Minuten vom Sand entfernt). Die genaue Adresse teilen wir euch nach eurer Anmeldung mit. Solltet ihr nicht mit dem Auto anreisen, finden wir eine L\u00f6sung. Das Kochen wird ca. 3 Stunden dauern.",
+            "taskDesc": "Wir werden wieder veganes Chili kochen und mittags verteilen. Wenn ihr dabei helfen wollt, w\u00e4re das eine sehr gro\u00dfe Entlastung f\u00fcr uns. Treffpunkt ist um 9:00 bei Pfrondorf (mit dem Auto ca. 10 Minuten vom Sand entfernt). Die genaue Adresse teilen wir euch nach eurer Anmeldung mit. Solltet ihr nicht mit dem Auto anreisen, finden wir eine L\u00f6sung. Das Kochen wird ca. 3 Stunden dauern.",
             "taskShifts": [
                 {
-                    "shiftName": "09:30 - ca. 12:30",
-                    "shiftSlots": 3,
-                    "entries": [
-                        {
-                            "entryName": "Benny",
-                            "entryMail": "benny@bescl.de",
-                            "entryTimestamp": 1780953927,
-                            "entryHash": "7f6dc9835dba52f245f4541e514128a23916b5f39470674540c41248d44dce50"
-                        },
-                        {
-                            "entryName": "Benny",
-                            "entryMail": "benny@bescl.de",
-                            "entryTimestamp": 1780953928,
-                            "entryHash": "fe5b0e329d94dc5f723718bc8b2528c6212a97e2c49949d5968fafb54ec738dd"
-                        }
-                    ]
+                    "shiftName": "09:00 - ca. 12:00",
+                    "shiftSlots": 3
                 }
             ]
         },
