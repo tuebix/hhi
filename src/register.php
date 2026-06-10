@@ -68,10 +68,10 @@ Datum: {$eventInfo["eventDate"]}
 Schicht: {$taskName} ({$shiftName})\n
 Falls Du Dich abmelden möchtest, benutze bitte folgenden Link: \n
 {$config["baseUrl"]}?action=unregisterDialog&hash={$entry["entryHash"]}\n
-(Falls kein Abmelde-Dialog angezeigt wird, schalte deinen Ad-Blocker aus oder wechsle den Browser.)
+(Falls kein Abmelde-Dialog angezeigt wird, schalte deinen Ad-Blocker aus oder wechsle den Browser.)\n
 Du erhältst ein paar Tage vor der Veranstaltung eine weitere Mail mit genaueren Informationen zu Deiner Schicht.
-\n\n
-Mit freundlichen Grüßen
+\n
+Viele Grüße
 {$eventInfo["eventOrganizer"]}";
             $mail->send();
         } catch (Exception $e) {
