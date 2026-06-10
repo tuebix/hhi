@@ -61,13 +61,14 @@ function handleRegister(array $postData, array $config, array &$eventInfo): int 
             $mail->CharSet = "UTF-8";
             /* content */
             $mail->isHTML(false);
-            $mail->Subject = "Helfiliste " . $eventInfo["eventName"];
+            $mail->Subject = "Bestätigung Helfer " . $eventInfo["eventName"];
             $mail->Body = "Hallo {$entry["entryName"]}!\n\nVielen Dank für Deine Hilfe. Du hast Dich für folgende Schicht eingetragen:\n
 Veranstaltung: {$eventInfo["eventName"]}
 Datum: {$eventInfo["eventDate"]}
 Schicht: {$taskName} ({$shiftName})\n
 Falls Du Dich abmelden möchtest, benutze bitte folgenden Link: \n
 {$config["baseUrl"]}?action=unregisterDialog&hash={$entry["entryHash"]}\n
+(Falls kein Abmelde-Dialog angezeigt wird, schalte deinen Ad-Blocker aus oder wechsle den Browser.)
 Du erhältst ein paar Tage vor der Veranstaltung eine weitere Mail mit genaueren Informationen zu Deiner Schicht.
 \n\n
 Mit freundlichen Grüßen
