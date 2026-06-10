@@ -43,7 +43,7 @@ switch ($action) {
                     $toast = array("style" => "error", "message" => "Fehler bei Registrierung: Unbekannte Aufgabe/Schicht.");
                     break;
                 case MSG_REGISTER_FAILURE:
-                    $toast = array("style" => "error", "message" => "Fehler: Bestätigungsmail konnte nicht versendet werden (ZX-Kürzel unbekannt).<br/><br/>Eintrag im Dienstplan wurde <b>nicht</b> erstellt."); 
+                    $toast = array("style" => "error", "message" => "Fehler: Bestätigungsmail konnte nicht versendet werden (Fehler auf unserer Seite).<br/><br/>Eintrag im Dienstplan wurde <b>nicht</b> erstellt. Melde dich bei uns unter <a href='mailto:cfh@tuebix.org'>cfh@tuebix.org</a>.");
                     break;
                 case MSG_REGISTER_NOSPACE:
                     $toast = array("style" => "error", "message" => "Diese Schicht ist leider schon voll!");   
